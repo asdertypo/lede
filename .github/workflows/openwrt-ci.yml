@@ -45,6 +45,12 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v4
 
+      - name: Setup Debug
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 15
+        with:
+          detached: true
+
       - name: Update feeds
         run: |
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
